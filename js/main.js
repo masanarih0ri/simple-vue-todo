@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'memo'
+const STORAGE_KEY = 'todo'
 
 const app = {
   data() {
