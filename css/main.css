@@ -1,0 +1,8 @@
+.todo_content {
+  line-height: 48px;
+  font-size: 18px;
+}
+
+.todo_content_detail {
+  font-weight: bold;
+}

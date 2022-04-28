@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="cupcake">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>シンプルなToDoリスト</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.14.1/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/vue@3"></script>
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+  <div id="app" class="container mx-auto">
+    <p class="mt-4 mb-4">シンプルなTODOアプリです。</p>
+    <div>
+      <input type="text" v-model="todo" placeholder="ここにメモを入力" class="input input-bordered w-full max-w-xs">
+      <button @click="addTodo" class="btn btn-success">追加</button>
+    </div>
+    <div class="todos">
+      <div v-if="todos.length">
+        <div v-for="(todo, index) in todos">
+          <div class="todo">
+            <template v-if="todo.isEditable">
+              <div class="todo_content_edit mb-4">
+                <input type="text" v-model="todo.todo" class="input input-bordered w-full max-w-xs">
+              </div>
+              <button @click="updateTodo(index, todo)" class="btn btn-secondary">更新</button>
+            </template>
+            <template v-else>
+              <div class="todo_content">
+                メモの内容: <span class="todo_content_detail">{{ todo.todo }}</span>
+              </div>
+              <button @click="editTodo(index)" class="btn btn-primary">編集</button>
+            </template>
+            <button @click="deleteTodo(index)" class="btn btn-error">削除</button>
+          </div>
+          <div class="divider"></div>
+        </div>
+      </div>
+      <div v-else class="mt-4">Todoはまだありません</div>
+    </div>
+  </div>
+  <script src="./js/main.js"></script>
+</body>
+</html>
